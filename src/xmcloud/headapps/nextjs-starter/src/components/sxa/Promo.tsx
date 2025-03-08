@@ -7,6 +7,8 @@ import {
   Field,
   LinkField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { withEditableToolsWrapper } from 'lib/jarvis/with-editable-tools-wrapper';
+import { ComponentProps } from 'lib/component-props';
 
 interface Fields {
   PromoIcon: ImageField;
@@ -15,8 +17,7 @@ interface Fields {
   PromoText2: Field<string>;
 }
 
-type PromoProps = {
-  params: { [key: string]: string };
+type PromoProps = ComponentProps & {
   fields: Fields;
 };
 
@@ -28,56 +29,60 @@ const PromoDefaultComponent = (props: PromoProps): JSX.Element => (
   </div>
 );
 
-export const Default = (props: PromoProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
-  if (props.fields) {
-    return (
-      <div className={`component promo ${props?.params?.styles}`} id={id ? id : undefined}>
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.PromoIcon} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <JssRichText field={props.fields.PromoText} />
-              </div>
+export const Default = withEditableToolsWrapper()<ComponentProps>(
+  (props: PromoProps): JSX.Element => {
+    const id = props.params.RenderingIdentifier;
+    if (props.fields) {
+      return (
+        <div className={`component promo ${props?.params?.styles}`} id={id ? id : undefined}>
+          <div className="component-content">
+            <div className="field-promoicon">
+              <JssImage field={props.fields.PromoIcon} />
             </div>
-            <div className="field-promolink">
-              <JssLink field={props.fields.PromoLink} />
+            <div className="promo-text">
+              <div>
+                <div className="field-promotext">
+                  <JssRichText field={props.fields.PromoText} />
+                </div>
+              </div>
+              <div className="field-promolink">
+                <JssLink field={props.fields.PromoLink} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+
+    return <PromoDefaultComponent {...props} />;
   }
+);
 
-  return <PromoDefaultComponent {...props} />;
-};
-
-export const WithText = (props: PromoProps): JSX.Element => {
-  const id = props.params.RenderingIdentifier;
-  if (props.fields) {
-    return (
-      <div className={`component promo ${props?.params?.styles}`} id={id ? id : undefined}>
-        <div className="component-content">
-          <div className="field-promoicon">
-            <JssImage field={props.fields.PromoIcon} />
-          </div>
-          <div className="promo-text">
-            <div>
-              <div className="field-promotext">
-                <JssRichText className="promo-text" field={props.fields.PromoText} />
-              </div>
+export const WithText = withEditableToolsWrapper()<ComponentProps>(
+  (props: PromoProps): JSX.Element => {
+    const id = props.params.RenderingIdentifier;
+    if (props.fields) {
+      return (
+        <div className={`component promo ${props?.params?.styles}`} id={id ? id : undefined}>
+          <div className="component-content">
+            <div className="field-promoicon">
+              <JssImage field={props.fields.PromoIcon} />
             </div>
-            <div className="field-promotext">
-              <JssRichText className="promo-text" field={props.fields.PromoText2} />
+            <div className="promo-text">
+              <div>
+                <div className="field-promotext">
+                  <JssRichText className="promo-text" field={props.fields.PromoText} />
+                </div>
+              </div>
+              <div className="field-promotext">
+                <JssRichText className="promo-text" field={props.fields.PromoText2} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
-  return <PromoDefaultComponent {...props} />;
-};
+    return <PromoDefaultComponent {...props} />;
+  }
+);

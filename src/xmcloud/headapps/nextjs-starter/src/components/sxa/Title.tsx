@@ -5,6 +5,8 @@ import {
   TextField,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ComponentProps } from 'lib/component-props';
+import { withEditableToolsWrapper } from 'lib/jarvis/with-editable-tools-wrapper';
 import React from 'react';
 
 interface Fields {
@@ -38,8 +40,7 @@ interface Fields {
   };
 }
 
-type TitleProps = {
-  params: { [key: string]: string };
+type TitleProps = ComponentProps & {
   fields: Fields;
 };
 
@@ -60,35 +61,37 @@ const ComponentContent = (props: ComponentContentProps) => {
   );
 };
 
-export const Default = (props: TitleProps): JSX.Element => {
-  const datasource = props.fields?.data?.datasource || props.fields?.data?.contextItem;
-  const { sitecoreContext } = useSitecoreContext();
-  const text: TextField = datasource?.field?.jsonValue || {};
-  const link: LinkField = {
-    value: {
-      href: datasource?.url?.path,
-      title: datasource?.field?.jsonValue?.value,
-    },
-  };
-  if (sitecoreContext.pageState !== 'normal') {
-    link.value.querystring = `sc_site=${datasource?.url?.siteName}`;
-    if (!text?.value) {
-      text.value = 'Title field';
-      link.value.href = '#';
+export const Default = withEditableToolsWrapper()<ComponentProps>(
+  (props: TitleProps): JSX.Element => {
+    const datasource = props.fields?.data?.datasource || props.fields?.data?.contextItem;
+    const { sitecoreContext } = useSitecoreContext();
+    const text: TextField = datasource?.field?.jsonValue || {};
+    const link: LinkField = {
+      value: {
+        href: datasource?.url?.path,
+        title: datasource?.field?.jsonValue?.value,
+      },
+    };
+    if (sitecoreContext.pageState !== 'normal') {
+      link.value.querystring = `sc_site=${datasource?.url?.siteName}`;
+      if (!text?.value) {
+        text.value = 'Title field';
+        link.value.href = '#';
+      }
     }
-  }
 
-  return (
-    <ComponentContent styles={props?.params?.styles} id={props?.params?.RenderingIdentifier}>
-      <>
-        {sitecoreContext.pageEditing ? (
-          <Text field={text} />
-        ) : (
-          <Link field={link}>
+    return (
+      <ComponentContent styles={props?.params?.styles} id={props?.params?.RenderingIdentifier}>
+        <>
+          {sitecoreContext.pageEditing ? (
             <Text field={text} />
-          </Link>
-        )}
-      </>
-    </ComponentContent>
-  );
-};
+          ) : (
+            <Link field={link}>
+              <Text field={text} />
+            </Link>
+          )}
+        </>
+      </ComponentContent>
+    );
+  }
+);

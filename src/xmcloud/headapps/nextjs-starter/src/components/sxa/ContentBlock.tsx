@@ -1,5 +1,6 @@
 import { Text, RichText, Field, withDatasourceCheck } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
+import { withEditableToolsWrapper } from 'lib/jarvis/with-editable-tools-wrapper';
 
 type ContentBlockProps = ComponentProps & {
   fields: {
@@ -21,4 +22,6 @@ const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => (
   </div>
 );
 
-export default withDatasourceCheck()<ContentBlockProps>(ContentBlock);
+export default withDatasourceCheck()<ContentBlockProps>(
+  withEditableToolsWrapper()<ComponentProps>(ContentBlock)
+);

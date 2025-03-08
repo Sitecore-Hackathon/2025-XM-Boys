@@ -11,7 +11,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ForgeFlexibleContainer from 'base-components/modules/FlexibleContainer';
 import { LinkProps } from 'base-components/types';
-import { PageEditorMessage } from 'components/sxa/PageEditorMessage';
+import { PageEditorMessage } from 'atoms/editing/PageEditorMessage';
 import { getLinkText } from 'helpers/foundation/links/get-link-text';
 import { ComponentProps } from 'lib/component-props';
 

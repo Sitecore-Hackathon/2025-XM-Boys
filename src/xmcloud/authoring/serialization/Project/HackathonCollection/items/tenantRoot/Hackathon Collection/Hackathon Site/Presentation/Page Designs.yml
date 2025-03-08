@@ -5,6 +5,9 @@ Template: "958b7d63-0f04-4718-900e-6161db092e6b"
 Path: /sitecore/content/Hackathon Collection/Hackathon Site/Presentation/Page Designs
 BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
 SharedFields:
+- ID: "ba1f60d6-3deb-40cc-bb61-eec772279ee1"
+  Hint: TemplatesMapping
+  Value: "%7bA79C32CF-80EC-474B-932A-6D84FAC9564C%7d%3d%257BDAC3601A-608D-4133-96F0-600DD47E97D1%257D"
 - ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
   Hint: __Originator
   Value: "{2EA756FA-AED6-4599-83B7-36FEFE229B31}"
@@ -26,11 +29,11 @@ Languages:
         sitecore\paul.bonilla@verndale.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3afa80cf-3c08-413f-92d4-1b3ca8bd49c1"
+      Value: "bda4511d-e881-4406-94b0-fa2eb9d3ec5a"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\paul.bonilla@verndale.com
+        sitecore\roberto.armas@verndale.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20250308T054427Z
+      Value: 20250308T171135Z

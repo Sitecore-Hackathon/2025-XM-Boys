@@ -4,12 +4,14 @@ import { parseString, Builder } from "xml2js";
 import { promisify } from "util";
 import { generateUid, formatUid } from "./utils";
 import { Item } from "../models/item";
+import { filterPlaceholders } from "./utils/filter-placeholders";
+import { ComponentRendering } from "../models/component";
 type CloneRenderingBody = {
     itemId: string;
     language: string;
     renderingId: string;
-    datasource: string;
-    placeholders: { [key: string]: any[] };
+    dataSource: string;
+    placeholders?: { [key: string]: any[] };
 };
 
 const getNextDynamicPlaceholderId = (renderings: any[]): number => {
@@ -116,7 +118,10 @@ const cloneRenderingInLayout = async (
                 ? "/" +
                   parentPlaceholder +
                   "/" +
-                  placeholder?.replace("{*}", phDynamicId.toString())
+                  placeholder?.replace(
+                      /(-{[*]}|-\d+)/,
+                      "-" + phDynamicId.toString()
+                  )
                 : rendering.$["s:ph"],
         },
     };
@@ -131,11 +136,14 @@ const processPlaceholders = async (
     dynamicId: number
 ) => {
     for (const placeholder of Object.keys(placeholders)) {
-        for (const rendering of placeholders[placeholder]) {
+        const filteredPlaceholders = filterPlaceholders(
+            placeholders[placeholder] as ComponentRendering[]
+        );
+        for (const rendering of filteredPlaceholders) {
             const childCloneResponse = await cloneRenderingInLayout(
                 renderings,
-                rendering.uid,
-                rendering.dataSource,
+                rendering.uid as string,
+                rendering.dataSource as string,
                 parentPh,
                 placeholder,
                 dynamicId
@@ -169,7 +177,7 @@ export const cloneRendering = async (body: CloneRenderingBody) => {
         const cloneResponse = await cloneRenderingInLayout(
             renderings,
             body.renderingId,
-            body.datasource
+            body.dataSource
         );
         renderings = cloneResponse.renderings;
         const nextDynamicPlaceholderId = cloneResponse.nextDynamicPlaceholderId;
@@ -179,7 +187,7 @@ export const cloneRendering = async (body: CloneRenderingBody) => {
         // Process initial placeholders
         renderings = await processPlaceholders(
             renderings,
-            body.placeholders,
+            body.placeholders ?? {},
             cloneResponse.clone.$["s:ph"],
             nextDynamicPlaceholderId
         );

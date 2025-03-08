@@ -5,6 +5,7 @@ import { Text, Link, useSitecoreContext, Image } from '@sitecore-jss/sitecore-js
 import ForgeExternalLinkCard from 'base-components/modules/ExternalLinkCard';
 import { ImageProps } from 'base-components/types';
 import { getRelativeUrl } from 'helpers/foundation/pages/get-relative-url';
+import { withEditableToolsWrapper } from 'lib/jarvis/with-editable-tools-wrapper';
 
 type ExternalLinkCardFields = {
   image: ImageField;
@@ -68,4 +69,6 @@ const ArticleCard = ({ fields, params }: ExternalLinkCardProps) => {
   );
 };
 
-export default withDatasourceRendering()<ExternalLinkCardProps>(ArticleCard);
+export default withDatasourceRendering()<ExternalLinkCardProps>(
+  withEditableToolsWrapper()<ExternalLinkCardProps>(ArticleCard)
+);

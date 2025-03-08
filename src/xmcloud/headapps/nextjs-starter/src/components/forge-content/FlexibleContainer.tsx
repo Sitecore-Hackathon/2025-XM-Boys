@@ -11,9 +11,10 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ForgeFlexibleContainer from 'base-components/modules/FlexibleContainer';
 import { LinkProps } from 'base-components/types';
-import { PageEditorMessage } from 'atoms/editing/PageEditorMessage';
+import { PageEditorMessage } from 'src/atoms/editing/PageEditorMessage';
 import { getLinkText } from 'helpers/foundation/links/get-link-text';
 import { ComponentProps } from 'lib/component-props';
+import { withEditableToolsWrapper } from 'lib/jarvis/with-editable-tools-wrapper';
 
 type FlexibleContainerFields = {
   heading: Field<string>;
@@ -115,15 +116,17 @@ const _FlexibleContainerWithHeadingAndTrailingButton = (
 };
 
 export const WithHeading = withDatasourceRendering()<FlexibleContainerProps>(
-  _FlexibleContainerWithHeading
+  withEditableToolsWrapper()<FlexibleContainerProps>(_FlexibleContainerWithHeading)
 );
 
 export const WithHeadingAndButton = withDatasourceRendering()<FlexibleContainerProps>(
-  _FlexibleContainerWithHeadingAndButton
+  withEditableToolsWrapper()<FlexibleContainerProps>(_FlexibleContainerWithHeadingAndButton)
 );
 
 export const WithHeadingAndTrailingButton = withDatasourceRendering()<FlexibleContainerProps>(
-  _FlexibleContainerWithHeadingAndTrailingButton
+  withEditableToolsWrapper()<FlexibleContainerProps>(_FlexibleContainerWithHeadingAndTrailingButton)
 );
 
-export const Default = withDatasourceRendering()<FlexibleContainerProps>(_Default);
+export const Default = withDatasourceRendering()<FlexibleContainerProps>(
+  withEditableToolsWrapper()<FlexibleContainerProps>(_Default)
+);

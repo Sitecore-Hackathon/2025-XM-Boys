@@ -164,7 +164,11 @@ const FlexibleContainer = ({
         )}
 
         {children && (
-          <section className={`${styles['flexible-container__elements-container']} `}>
+          <section
+            className={`${styles['flexible-container__elements-container']} ${
+              isEditing ? styles['is-editing'] : ''
+            }`}
+          >
             <Section>
               <div className={styles['flexible-container__hidden-elements']} ref={elementsRef}>
                 {children}

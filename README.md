@@ -113,6 +113,33 @@ This repository is based on the XM Cloud starter kit.
 dotnet sitecore ser push
 ```
 
+IMPORTANT!! as demo requires some npm serialization packages, for avoid any troubleshooting in content sync issue. Run npm first during initial up.ps1.
+
+in src/sitecore.json
+
+```json
+   "modules": [
+        "npm:@constellation4sitecore/constellation-sxa-nextjs@22.5.2",
+        "npm:@constellation4sitecore/labels@22.5.2",
+        "npm:@constellation4sitecore/url-friendly-page-names@22.5.2",
+        "npm:@constellation4sitecore/navigation@22.5.2"
+    ],
+```
+
+Then restore file
+
+```json
+    "modules": [
+        "npm:@constellation4sitecore/constellation-sxa-nextjs@22.5.2",
+        "npm:@constellation4sitecore/labels@22.5.2",
+        "npm:@constellation4sitecore/url-friendly-page-names@22.5.2",
+        "npm:@constellation4sitecore/navigation@22.5.2",
+        "authoring/items/**/*.module.json",
+        "authoring/serialization/Feature/*/*.module.json",
+        "authoring/serialization/Project/*/*.module.json"
+    ],
+```
+
 ### Install Jarvis API
 
 The API is created in the `/src/jarvis-api` folder. Since it is an ExpressJS app, first you need to install the dependencies:

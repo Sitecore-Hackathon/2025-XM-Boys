@@ -1,16 +1,72 @@
 import React, { ReactNode, ComponentType, ReactElement, useState } from 'react';
-import { ComponentRendering, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import {
+  ComponentRendering,
+  useSitecoreContext,
+  PlaceholdersData,
+  ComponentFields,
+  HtmlElementRendering,
+} from '@sitecore-jss/sitecore-jss-nextjs';
 import styles from './with-editable-tools-wrapper.module.scss';
 import { useRouter } from 'next/router';
 import { Button } from '@chakra-ui/react';
+import Icon from '@mdi/react';
+import { mdiContentCopy } from '@mdi/js';
 
 interface ComponentData {
-  placeholders: unknown;
+  placeholders: ProcessedPlaceholderData | undefined;
   dataSource: string | undefined;
   renderingId: string | undefined;
   language: string | undefined;
   itemId: string | undefined;
 }
+
+interface ProcessedPlaceholderItem {
+  uid: string;
+  dataSource: string;
+  placeholders?: ProcessedPlaceholderData;
+}
+
+interface ProcessedPlaceholderData {
+  [key: string]: ProcessedPlaceholderItem[];
+}
+
+const processPlaceholders = (
+  placeholders: PlaceholdersData<string> | undefined
+): ProcessedPlaceholderData | undefined => {
+  if (!placeholders || typeof placeholders !== 'object') {
+    return undefined;
+  }
+
+  const processedPlaceholders: ProcessedPlaceholderData = {};
+
+  for (const [key, value] of Object.entries(placeholders)) {
+    if (Array.isArray(value)) {
+      processedPlaceholders[key] = value
+        .map((item: ComponentRendering<ComponentFields> | HtmlElementRendering) => {
+          if ('uid' in item && item.uid && 'dataSource' in item) {
+            const processedItem: ProcessedPlaceholderItem = {
+              uid: item.uid,
+              dataSource: item.dataSource ?? '',
+            };
+
+            // Process nested placeholders if they exist
+            if ('placeholders' in item && item.placeholders) {
+              const nestedPlaceholders = processPlaceholders(item.placeholders);
+              if (nestedPlaceholders && Object.keys(nestedPlaceholders).length > 0) {
+                processedItem.placeholders = nestedPlaceholders;
+              }
+            }
+
+            return processedItem;
+          }
+          return null;
+        })
+        .filter((item): item is ProcessedPlaceholderItem => item !== null);
+    }
+  }
+
+  return processedPlaceholders;
+};
 
 const sendComponentData = async (data: ComponentData): Promise<void> => {
   try {
@@ -56,7 +112,9 @@ const EditableComponentWrapper: React.FC<EditableComponentWrapperProps> = ({
             onClick={async () => {
               setIsLoading(true);
               const componentData: ComponentData = {
-                placeholders: rendering?.placeholders,
+                placeholders: processPlaceholders(
+                  rendering?.placeholders
+                ) as ProcessedPlaceholderData,
                 dataSource: rendering?.dataSource,
                 renderingId: rendering?.uid,
                 language: sitecoreContext.language,
@@ -68,12 +126,12 @@ const EditableComponentWrapper: React.FC<EditableComponentWrapperProps> = ({
                 router.reload();
               });
             }}
-            colorScheme="neutral"
-            className={styles['editable-component__edit-button']}
+            variant="outline"
+            colorScheme="primary"
             isLoading={isLoading}
             loadingText="Copying..."
           >
-            Copy
+            <Icon path={mdiContentCopy} size={1} /> &nbsp; {rendering?.componentName}
           </Button>
         )}
       </div>

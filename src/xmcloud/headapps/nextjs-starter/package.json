@@ -39,6 +39,8 @@
     "@constellation4sitecore/mapper": "^22.5.2",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "@sitecore-cloudsdk/core": "^0.4.2",
     "@sitecore-cloudsdk/events": "^0.4.2",
     "@sitecore-feaas/clientside": "^0.5.19",

@@ -66,6 +66,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: '*.vercel-storage.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
         hostname: 'feaas*.blob.core.windows.net',
         port: '',
       },

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Github } from 'lucide-react';
 import styles from './header.module.scss';
@@ -31,7 +30,7 @@ export default function Header() {
           <Link href="/" className={styles['header__logo_link']}>
             <div className={styles['header__logo_wrapper']}>
               <div className={styles['header__logo_glow']}></div>
-              <Image
+              <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/xmboys-I9Z2WL6vvb6Eir7aq8KRZJG7lpLijW.webp"
                 alt="XM BOYS Logo"
                 width={60}

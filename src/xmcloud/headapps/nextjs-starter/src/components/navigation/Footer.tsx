@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import styles from './footer.module.scss';
@@ -12,7 +11,7 @@ export default function Footer(): JSX.Element {
         <div className={styles['footer__grid']}>
           <div className={styles['footer__section']}>
             <Link href="/" className={styles['footer__logo_link']}>
-              <Image
+              <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/xmboys-I9Z2WL6vvb6Eir7aq8KRZJG7lpLijW.webp"
                 alt="XM BOYS Logo"
                 width={80}

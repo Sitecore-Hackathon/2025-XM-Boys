@@ -30,8 +30,7 @@ Jarvis (cloud API solution) empowers content authors to:
 -   Clone existing components with a single click, preserving all styling, layout, and configuration settings
 -   Focus primarily on content creation rather than repetitive component setup
 -   Reduce time spent on technical configuration and component placement
--   Maintain design consistency across the site by duplicating properly configured components
-    By eliminating the need to repeatedly drag, drop, and configure similar components, Jarvis transforms the content authoring experience in Sitecore Pages. Content teams can now work significantly faster, with less technical overhead, allowing them to dedicate more time to creating engaging content rather than handling repetitive configuration tasks.
+-   Maintain design consistency across the site by duplicating properly configured components by eliminating the need to repeatedly drag, drop, and configure similar components, Jarvis transforms the content authoring experience in Sitecore Pages. Content teams can now work significantly faster, with less technical overhead, allowing them to dedicate more time to creating engaging content rather than handling repetitive configuration tasks.
     The solution seamlessly integrates with the Sitecore Pages editing interface through a custom Higher-Order Component, making the cloning functionality intuitive and accessible directly within the familiar authoring environment.
 
 ## Project Structure
@@ -63,8 +62,9 @@ Our solution consists of two main components:
 │   │   │   └── index.ts   # Main entry point
 │   │   └── xmcloud/           # XM Cloud Starter Kit
 │   │       ├── src/
-│   │       │   ├── components/
-│   │       │   │   └── withEditableToolsWrapper.tsx  # HOC that enables cloning in Pages
+│   │       │   ├── lib/
+│   │       │   │   ├── jarvis/
+│   │       │   │   │   └── withEditableToolsWrapper.tsx  # HOC that enables cloning in Pages
 └── ENTRYFORM.md           # Hackathon submission details
 ```
 

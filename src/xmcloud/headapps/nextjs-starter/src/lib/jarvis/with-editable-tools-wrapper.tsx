@@ -69,6 +69,7 @@ const EditableComponentWrapper: React.FC<EditableComponentWrapperProps> = ({
               });
             }}
             colorScheme="neutral"
+            className={styles['editable-component__edit-button']}
             isLoading={isLoading}
             loadingText="Copying..."
           >

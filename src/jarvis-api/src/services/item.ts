@@ -115,13 +115,16 @@ const cloneRenderingInLayout = async (
                 nextDynamicPlaceholderId
             ),
             "s:ph": phDynamicId
-                ? "/" +
+                ? (!parentPlaceholder?.startsWith("/") ? "/" : "") +
                   parentPlaceholder +
                   "/" +
-                  placeholder?.replace(
-                      /(-{[*]}|-\d+)/,
-                      "-" + phDynamicId.toString()
-                  )
+                  (placeholder?.endsWith("-{*}") ||
+                  /.*-\d+$/.test(placeholder || "")
+                      ? placeholder?.replace(
+                            /(-{[*]}|-\d+)$/,
+                            "-" + phDynamicId.toString()
+                        )
+                      : placeholder)
                 : rendering.$["s:ph"],
         },
     };

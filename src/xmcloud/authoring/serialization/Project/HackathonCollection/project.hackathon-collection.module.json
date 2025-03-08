@@ -2,46 +2,47 @@
     "$schema": "../../../../.sitecore/schemas/ModuleFile.schema.json",
     "namespace": "Project.HackathonCollection",
     "items": {
-      "includes": [
-        {
-          "name": "templates",
-          "path": "/sitecore/templates/Project/Hackathon Collection",
-          "allowedPushOperations": "createUpdateAndDelete"
-        },
-        {
-          "name": "branchTemplates",
-          "path": "/sitecore/templates/Branches/Project/Hackathon Collection",
-          "allowedPushOperations": "createUpdateAndDelete"
-        },
-        {
-          "name": "settings",
-          "path": "/sitecore/system/Settings/Project/Hackathon Collection",
-          "allowedPushOperations": "createUpdateAndDelete"
-        },
-        {
-          "name": "projectMediaFolders",
-          "path": "/sitecore/Media Library/Project/Hackathon Collection"
-        },
-        {
-          "name": "layouts",
-          "path": "/sitecore/layout/Layouts/Project/Hackathon Collection",
-          "allowedPushOperations": "createUpdateAndDelete"
-        },
-        {
-          "name": "renderings",
-          "path": "/sitecore/layout/Renderings/Project/Hackathon Collection",
-          "allowedPushOperations": "createUpdateAndDelete"
-        },
-        {
-          "name": "placeholderSettings",
-          "path": "/sitecore/layout/Placeholder Settings/Project/Hackathon Collection",
-          "allowedPushOperations": "createUpdateAndDelete"
-        },
-        {
-          "name": "tenantRoot",
-          "path": "/sitecore/content/Hackathon Collection",
-          "allowedPushOperations": "createAndUpdate"
-        }
-      ]
-    }
-  }
+        "includes": [
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Project/Hackathon Collection",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "branchTemplates",
+                "path": "/sitecore/templates/Branches/Project/Hackathon Collection",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "settings",
+                "path": "/sitecore/system/Settings/Project/Hackathon Collection",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "projectMediaFolders",
+                "path": "/sitecore/Media Library/Project/Hackathon Collection"
+            },
+            {
+                "name": "layouts",
+                "path": "/sitecore/layout/Layouts/Project/Hackathon Collection",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "renderings",
+                "path": "/sitecore/layout/Renderings/Project/Hackathon Collection",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "placeholderSettings",
+                "path": "/sitecore/layout/Placeholder Settings/Project/Hackathon Collection",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "tenantRoot",
+                "path": "/sitecore/content/Hackathon Collection",
+                "allowedPushOperations": "createAndUpdate"
+            }
+        ]
+    },
+    "references": ["Feature.Content", "Constellation", "Constellation.Foundation.Labels", "Constellation.Feature.Navigation"]
+}

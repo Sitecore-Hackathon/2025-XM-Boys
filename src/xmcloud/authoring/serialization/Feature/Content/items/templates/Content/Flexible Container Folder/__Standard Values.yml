@@ -1,0 +1,33 @@
+﻿---
+ID: "ba11d96c-2ca5-49f5-ba8f-ffe23f703115"
+Parent: "ca14a177-f2f4-465a-b3f1-40676bbb0106"
+Template: "ca14a177-f2f4-465a-b3f1-40676bbb0106"
+Path: /sitecore/templates/Feature/Content/Flexible Container Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {11022E45-87B9-400A-B39B-65EF64D4E469}
+    {CA14A177-F2F4-465A-B3F1-40676BBB0106}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "baa90da1-3f2a-4f5a-896f-7d8a65fd1934"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\raul.villamarin@verndale.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240802T174332Z

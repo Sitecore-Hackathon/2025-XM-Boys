@@ -74,6 +74,10 @@
   @include media-breakpoint-up(tablet) {
     justify-content: flex-start;
   }
+
+  &.is-editing {
+    flex-wrap: nowrap;
+  }
 }
 
 .flexible-container__cta-container {

@@ -40,6 +40,7 @@ const sitemapApi = async (
 
       return res.send(xmlResponse.data);
     } catch (error) {
+      console.error('Error fetching sitemap:', error);
       return res.redirect('/404');
     }
   }

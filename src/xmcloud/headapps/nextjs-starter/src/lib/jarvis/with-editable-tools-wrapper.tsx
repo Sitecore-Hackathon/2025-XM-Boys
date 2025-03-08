@@ -82,7 +82,7 @@ const sendComponentData = async (data: ComponentData): Promise<void> => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const result = await response.json();
+    await response.json();
   } catch (error) {
     console.error('Failed to send component data:', error);
   }

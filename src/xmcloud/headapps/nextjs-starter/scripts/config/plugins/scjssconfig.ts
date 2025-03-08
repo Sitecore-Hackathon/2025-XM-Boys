@@ -15,6 +15,7 @@ class ScJssConfigPlugin implements ConfigPlugin {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       scJssConfig = require('scjssconfig.json');
     } catch (e) {
+      console.log('scjssconfig.json not found', e);
       return config;
     }
 

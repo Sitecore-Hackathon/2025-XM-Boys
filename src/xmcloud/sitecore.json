@@ -6,7 +6,8 @@
     "//npm:@constellation4sitecore/url-friendly-page-names@22.5.2",
     "//npm:@constellation4sitecore/navigation@22.5.2",
     "authoring/items/**/*.module.json",
-    "authoring/serialization/**/*.module.json"
+    "authoring/serialization/Feature/*/*.module.json",
+    "authoring/serialization/Project/*/*.module.json"
   ],
   "plugins": [
     "Sitecore.DevEx.Extensibility.Serialization@5.2.113",

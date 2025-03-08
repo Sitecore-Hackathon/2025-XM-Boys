@@ -47,7 +47,7 @@ export default function Header() {
 
           {/* GitHub Projects Button */}
           <a
-            href="https://github.com/xmboys"
+            href="https://github.com/Sitecore-Hackathon/2025-XM-Boys"
             target="_blank"
             rel="noopener noreferrer"
             className={styles['header__github_link']}

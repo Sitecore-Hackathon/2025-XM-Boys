@@ -1,0 +1,34 @@
+﻿---
+ID: "277ed18b-bfce-450e-aca8-1fcab0c4b53f"
+Parent: "c2f8115b-d952-4626-8c0b-9a55d034de7c"
+Template: "91227e7b-b6a1-4750-ab74-172bdf6bd0d5"
+Path: /sitecore/content/Hackathon Collection/Hackathon Site/Settings/Standard Values/Rendering Parameters/Flexible Container
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20250308T054433Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3ae1c5cc-74b2-48df-b6e1-415b76ae60d7"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20250308T054433Z
+    - ID: "f47b7e02-3e16-4340-94ea-7b22ba9a8d4f"
+      Hint: colorTheme
+      Value: Light

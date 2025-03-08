@@ -1,0 +1,11 @@
+.generic-slider__navigation-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 24px;
+}
+
+.generic-slider__arrow-container {
+  display: flex;
+  gap: var(--padding-x-small);
+}

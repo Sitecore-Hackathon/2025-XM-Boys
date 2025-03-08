@@ -1,0 +1,45 @@
+.width-1-4 {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: calc(25% - 24px);
+  }
+}
+
+.width-1-3 {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: calc(33% - 24px);
+  }
+}
+
+.width-1-2 {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: calc(50% - 24px);
+  }
+}
+
+.width-2-3 {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: calc(66% - 24px);
+  }
+}
+
+.width-3-4 {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: calc(75% - 24px);
+  }
+}
+
+#header,
+#content,
+#footer {
+  display: block;
+}

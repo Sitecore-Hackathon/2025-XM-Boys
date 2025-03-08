@@ -1,0 +1,25 @@
+.slider-pagination__dot {
+  background: none;
+  background-color: var(--light-primary);
+  block-size: 8px;
+  border: 0;
+  border-radius: 100px;
+  color: inherit;
+  inline-size: 8px;
+  padding: 0;
+}
+
+.slider-pagination__dot--active {
+  background-color: var(--default-primary);
+
+  &.slider-pagination__dot--dark {
+    background-color: var(--white);
+  }
+}
+
+.slider-pagination {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--padding-small);
+}

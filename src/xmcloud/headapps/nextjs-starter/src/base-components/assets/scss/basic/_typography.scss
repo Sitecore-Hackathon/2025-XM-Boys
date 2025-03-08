@@ -1,0 +1,111 @@
+/* stylelint-disable */
+@use 'sass:math';
+
+@import '../abstracts/mixins-verndale';
+
+@function pxToRem($px) {
+  @return #{math.div($px, 16)}rem;
+}
+
+$font-size-h1-mobile: 38;
+$font-size-h2-mobile: 29;
+$font-size-h3-mobile: 22;
+$font-size-h4-mobile: 16;
+$font-size-h5-mobile: 14;
+$font-size-h6-mobile: 12;
+$font-size-copy-large-mobile: 16;
+$font-size-copy-medium-mobile: 14;
+$font-size-copy-small-mobile: 10;
+
+$font-size-h1-desktop: 43;
+$font-size-h2-desktop: 32;
+$font-size-h3-desktop: 24;
+$font-size-h4-desktop: 18;
+$font-size-h5-desktop: 14;
+$font-size-h6-desktop: 12;
+$font-size-copy-large-desktop: 18;
+$font-size-copy-medium-desktop: 16;
+$font-size-copy-small-desktop: 12;
+
+:root {
+  /* Font Family */
+  --font-family-primary: 'Titillium Web', sans-serif;
+  --font-family-secondary: 'Open Sans', sans-serif;
+
+  /* Font Size */
+  --font-size-h1: #{pxToRem($font-size-h1-mobile)};
+  --font-size-h2: #{pxToRem($font-size-h2-mobile)};
+  --font-size-h3: #{pxToRem($font-size-h3-mobile)};
+  --font-size-h4: #{pxToRem($font-size-h4-mobile)};
+  --font-size-h5: #{pxToRem($font-size-h5-mobile)};
+  --font-size-h6: #{pxToRem($font-size-h6-mobile)};
+  --font-size-copy-large: #{pxToRem($font-size-copy-large-mobile)};
+  --font-size-copy-medium: #{pxToRem($font-size-copy-medium-mobile)};
+  --font-size-copy-small: #{pxToRem($font-size-copy-small-mobile)};
+
+  /* Line Height */
+  --font-line-height-h1: 48px;
+  --font-line-height-h2: 36px;
+  --font-line-height-h3: 28px;
+  --font-line-height-h4: 20px;
+  --font-line-height-h5: 18px;
+  --font-line-height-h6: 15px;
+  --font-line-height-body-large: 24px;
+  --font-line-height-body-medium: 20px;
+  --font-line-height-body-small: 16px;
+
+  /* Font */
+  --h1: normal 700 var(--font-size-h1) / var(--font-line-height-h1) var(--font-family-primary);
+  --h2: normal 700 var(--font-size-h2) / var(--font-line-height-h2) var(--font-family-primary);
+  --h3: normal 700 var(--font-size-h3) / var(--font-line-height-h3) var(--font-family-primary);
+  --h4: normal 700 var(--font-size-h4) / var(--font-line-height-h4) var(--font-family-primary);
+  --h5: normal 700 var(--font-size-h5) / var(--font-line-height-h5) var(--font-family-primary);
+  --h6: normal 700 var(--font-size-h6) / var(--font-line-height-h6) var(--font-family-primary);
+
+  --copy-large-regular: normal 400 var(--font-size-copy-large) / var(--font-line-height-body-large)
+    var(--font-family-secondary);
+  --copy-medium-regular: normal 400 var(--font-size-copy-medium) /
+    var(--font-line-height-body-medium) var(--font-family-secondary);
+  --primary-copy-regular: normal 400 var(--font-size-copy-large) /
+    var(--font-line-height-body-large) var(--font-family-secondary);
+  --primary-copy-bold: normal 700 var(--font-size-copy-large) / var(--font-line-height-body-large)
+    var(--font-family-secondary);
+  --secondary-copy-regular: normal 400 var(--font-size-copy-medium) /
+    var(--font-line-height-body-medium) var(--font-family-secondary);
+  --secondary-copy-bold: normal 700 var(--font-size-copy-medium) /
+    var(--font-line-height-body-medium) var(--font-family-secondary);
+  --caption-copy-regular: normal 400 var(--font-size-copy-small) /
+    var(--font-line-height-body-small) var(--font-family-secondary);
+  --button-primary: normal 700 var(--font-size-copy-large) / var(--font-line-height-body-large)
+    var(--font-family-secondary);
+  --button-secondary: normal 700 var(--font-size-copy-medium) / var(--font-line-height-body-medium)
+    var(--font-family-secondary);
+  --link-primary: normal 400 var(--font-size-copy-large) / var(--font-line-height-body-large)
+    var(--font-family-secondary);
+  --link-secondary: normal 400 var(--font-size-copy-medium) / var(--font-line-height-body-medium)
+    var(--font-family-secondary);
+
+  @include media-breakpoint-up(tablet) {
+    /* Font Size */
+    --font-size-h1: #{pxToRem($font-size-h1-desktop)};
+    --font-size-h2: #{pxToRem($font-size-h2-desktop)};
+    --font-size-h3: #{pxToRem($font-size-h3-desktop)};
+    --font-size-h4: #{pxToRem($font-size-h4-desktop)};
+    --font-size-h5: #{pxToRem($font-size-h5-desktop)};
+    --font-size-h6: #{pxToRem($font-size-h6-desktop)};
+    --font-size-copy-large: #{pxToRem($font-size-copy-large-desktop)};
+    --font-size-copy-medium: #{pxToRem($font-size-copy-medium-desktop)};
+    --font-size-copy-small: #{pxToRem($font-size-copy-small-desktop)};
+
+    /* Line Height */
+    --font-line-height-h1: 54px;
+    --font-line-height-h2: 40px;
+    --font-line-height-h3: 30px;
+    --font-line-height-h4: 23px;
+    --font-line-height-h5: 18px;
+    --font-line-height-h6: 15px;
+    --font-line-height-body-large: 27px;
+    --font-line-height-body-medium: 24px;
+    --font-line-height-body-small: 20px;
+  }
+}

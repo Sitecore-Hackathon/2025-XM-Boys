@@ -1,0 +1,74 @@
+/* stylelint-disable */
+
+@import '../abstracts/mixins-verndale';
+
+:root {
+  --mobile: 360px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --large: 1440px;
+  --wide: 1920px;
+
+  --default-primary: #6a2ff3;
+  --default-primary-dark: #4715b9;
+  --light-primary: #aa86ff;
+  --default-secondary: #00b4d8;
+  --light-secondary: #90e0ef;
+  --black: #000;
+  --white: #fff;
+  --gray-1: #222;
+  --gray-2: #444;
+  --gray-3: #d3d3d3;
+  --gray-4: #f6f6f6;
+  --success: #008768;
+  --error: #de3400;
+
+  /* Spacing */
+  /* Padding */
+  --padding-zero: 0;
+  --padding-x-small: 4px;
+  --padding-small: 8px;
+  --padding-medium: 16px;
+  --padding-large: 24px;
+  --padding-x-large: 32px;
+  --padding-2x-large: 40px;
+  --padding-3x-large: 48px;
+  --padding-4x-large: 56px;
+
+  /* Page Margin */
+  --page-margin-small: 24px;
+  --page-margin-medium: 24px;
+  --page-margin-large: 24px;
+  --page-margin-x-large: 24px;
+
+  /* Corner Radius */
+  --corner-radius-zero: 0;
+  --corner-radius-x-small: 4px;
+  --corner-radius-small: 8px;
+  --corner-radius-medium: 24px;
+  --corner-radius-large: 40px;
+  --corner-radius-x-large: 80px;
+  --corner-radius-full: 1000px;
+
+  /* Transition */
+  --ease-in-out-2: 'ease-in-out 0.2s';
+
+  @include media-breakpoint-up(tablet) {
+    /* Spacing */
+    /* Padding */
+    --padding-x-small: 8px;
+    --padding-small: 16px;
+    --padding-medium: 24px;
+    --padding-large: 40px;
+    --padding-x-large: 56px;
+    --padding-2x-large: 64px;
+    --padding-3x-large: 72px;
+    --padding-4x-large: 80px;
+
+    /* Page Margin */
+    --page-margin-small: 120px;
+    --page-margin-medium: 144px;
+    --page-margin-large: 224px;
+    --page-margin-x-large: 344px;
+  }
+}

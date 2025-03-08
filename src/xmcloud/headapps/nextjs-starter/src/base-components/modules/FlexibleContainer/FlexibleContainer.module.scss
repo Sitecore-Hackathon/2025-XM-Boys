@@ -1,0 +1,107 @@
+/* stylelint-disable */
+@import '../../assets/scss/abstracts/mixins-verndale';
+/* stylelint-enable */
+
+.flexible-container__description {
+  color: var(--gray-1);
+  font: var(--primary-copy-regular);
+}
+
+.flexible-container__content-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-small);
+
+  @include media-breakpoint-up(tablet) {
+    flex-direction: row;
+  }
+}
+
+.flexible-container__heading {
+  color: var(--gray-1);
+  font: var(--h2);
+}
+
+.flexible-container__header-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--padding-small);
+}
+
+.flexible-container {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-medium);
+}
+
+.flexible-container--editing-slider {
+  .flexible-container__element {
+    block-size: 100%;
+    display: flex;
+    inline-size: 100%;
+  }
+}
+
+.flexible-container--dark {
+  background-color: var(--default-primary-dark);
+  padding: var(--padding-medium);
+
+  .flexible-container__heading {
+    color: var(--white);
+  }
+
+  .flexible-container__description {
+    color: var(--white);
+
+    * {
+      color: var(--white);
+    }
+  }
+}
+
+.flexible-container__hidden-elements {
+  display: none;
+}
+
+.flexible-container__elements-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--padding-medium);
+  justify-content: center;
+
+  @include media-breakpoint-up(tablet) {
+    justify-content: flex-start;
+  }
+}
+
+.flexible-container__cta-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-medium);
+
+  @include media-breakpoint-up(tablet) {
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+/* stylelint-disable */
+@mixin flexible-container-slide-width($width, $tabletWidth, $tabletMargin) {
+  .flexible-container__swiper-slide--width-#{$width} {
+    inline-size: 100%;
+
+    @include media-breakpoint-up(tablet) {
+      inline-size: calc(#{$tabletWidth} - #{$tabletMargin}px);
+    }
+  }
+}
+/* stylelint-enable */
+
+@include flexible-container-slide-width('1-5', '20%', 40);
+@include flexible-container-slide-width('1-4', '25%', 40);
+@include flexible-container-slide-width('1-3', '33%', 27);
+@include flexible-container-slide-width('1-2', '50%', 24);
+@include flexible-container-slide-width('2-3', '66%', 48);
+@include flexible-container-slide-width('3-4', '75%', 48);

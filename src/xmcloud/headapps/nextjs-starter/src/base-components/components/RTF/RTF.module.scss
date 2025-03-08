@@ -1,0 +1,207 @@
+/* stylelint-disable */
+@mixin rte-indent($sizes) {
+  @each $size in $sizes {
+    .rte-indent-#{$size} {
+      padding-inline-start: calc(var(--padding-small) * #{$size});
+    }
+  }
+}
+
+.rtf__container {
+  * {
+    color: var(--gray-2);
+    font: var(--primary-copy-regular);
+  }
+
+  p {
+    margin-block-end: var(--padding-small);
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--black);
+    margin-block: var(--padding-medium);
+  }
+
+  h1 {
+    font: var(--h1);
+
+    * {
+      font: var(--h1);
+    }
+  }
+
+  h2 {
+    font: var(--h2);
+
+    * {
+      font: var(--h2);
+    }
+  }
+
+  h3 {
+    font: var(--h3);
+
+    * {
+      font: var(--h3);
+    }
+  }
+
+  h4 {
+    font: var(--h4);
+
+    * {
+      font: var(--h4);
+    }
+  }
+
+  h5 {
+    font: var(--h5);
+
+    * {
+      font: var(--h5);
+    }
+  }
+
+  h6 {
+    font: var(--h6);
+
+    * {
+      font: var(--h6);
+    }
+  }
+
+  u,
+  a {
+    text-decoration: underline;
+
+    * {
+      text-decoration: underline;
+    }
+  }
+
+  i {
+    font-style: italic;
+
+    * {
+      font-style: italic;
+    }
+  }
+
+  strong {
+    color: var(--black);
+    font-weight: bold;
+
+    * {
+      font-weight: bold;
+    }
+  }
+
+  em {
+    color: var(--gray-2);
+    font-style: italic;
+
+    * {
+      color: var(--gray-2);
+      font-style: italic;
+    }
+  }
+
+  sup,
+  sub {
+    block-size: 0;
+    line-height: 1;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    inset-block-end: 1ex;
+  }
+
+  sub {
+    inset-block-start: 0.5ex;
+  }
+
+  .rte-align-center {
+    text-align: center;
+  }
+
+  .rte-align-right {
+    text-align: end;
+  }
+
+  .rte-align-justify {
+    text-align: justify;
+  }
+
+  sup,
+  sub {
+    block-size: 0;
+    font-size: var(--caption-copy-regular);
+    line-height: 1;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  ul,
+  ol {
+    padding-inline-start: 40px;
+  }
+
+  ul {
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  ol {
+    li {
+      list-style-type: decimal;
+    }
+  }
+
+  sup {
+    inset-block-end: 1ex;
+  }
+
+  sub {
+    inset-block-start: 0.5ex;
+  }
+
+  p,
+  div {
+    font: var(--primary-copy-regular);
+  }
+
+  .rte-align-center {
+    text-align: center;
+  }
+
+  .rte-align-right {
+    text-align: end;
+  }
+
+  .rte-align-justify {
+    text-align: justify;
+  }
+
+  img {
+    block-size: auto !important;
+    inline-size: 100% !important;
+  }
+
+  $sizes: 1, 2, 3, 4, 5, 7, 8;
+
+  @include rte-indent($sizes);
+}
+
+/* stylelint-enable */

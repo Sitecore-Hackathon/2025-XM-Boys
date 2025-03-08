@@ -1,0 +1,46 @@
+﻿---
+ID: "f79ddfe4-a079-4adb-b1ca-f83d030cd768"
+Parent: "1843d9f9-1407-4211-9675-92dc3c8c6ef9"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: "/sitecore/layout/Placeholder Settings/Feature/Content/flexible-container-items"
+SharedFields:
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: 
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: Allowed Controls
+  Value: |
+    {5E4D50FE-A6A7-40FD-91DF-BC44248C7C43}
+    {CE7C8F74-1705-4369-AB8E-3AEB355BD527}
+    {4AA7717E-56E1-40A0-9033-B4BEC7398718}
+    {63798063-019F-445A-83DC-7CA0A0B48BEB}
+    {38621110-8D77-470E-9523-E46B7D381D61}
+    {CE2044B4-7950-420E-8A2C-9257B280064C}
+    {6E410253-8827-41E3-B17E-8276EC9EE2CB}
+    {DCE9EDE9-B8B8-444B-A81D-C015DE4AF692}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240801T161848Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\raul.villamarin@verndale.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\raul.villamarin@verndale.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "e9fc2e13-c57e-4f29-bfbb-2397123b8ade"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240927T184340Z

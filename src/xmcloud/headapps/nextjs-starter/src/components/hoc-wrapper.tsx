@@ -1,7 +1,7 @@
 import React, { ReactNode, ComponentType } from 'react';
 import { ComponentRendering, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 // import { useRouter } from 'next/router';
-import styles from './EditableComponentWrapper.module.scss';
+import styles from './hoc-wrapper.module.scss';
 interface EditableComponentWrapperProps {
   children: ReactNode;
   className?: string;

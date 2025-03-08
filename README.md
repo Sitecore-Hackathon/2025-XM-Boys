@@ -9,27 +9,45 @@
 
 XM Boys
 
+## Category
+
+-   Use of the Sitecore Authoring and/or Management API
+
+-   Enhancement to Pages Experience
 
 ## Description
 
-XM Boys aims to leverage generative AI to provide a cloud service akin to Pages, Explorer, and Components, as part of Composable DXP. This AI platform, named Jarvis, will retrieve information from a selected template, allowing users to edit content similarly to Explorer. Moreover, a helper button, the AI Assistant, will open a prompt where users can provide context for the text field they wish to generate for their module. Users can also offer module or company context to ensure accurate results from the AI tool.
+"Jarvis" is a powerful enhancement for Sitecore XM Cloud that addresses a critical workflow challenge faced by content authors. Our solution introduces a component cloning capability that dramatically streamlines the content creation process when working with SXA modules.
 
-The solution creates an item in Sitecore at the desired location. This initiative seeks to streamline content authoring and marketing efforts, providing an AI assistant for generative content, thereby saving time for users.
+### The Problem we solve
+
+Content authors typically spend significant time repeatedly configuring the same components - setting up styles, adjusting layouts, and fine-tuning presentation details - before they can focus on actual content creation. This repetitive configuration process creates unnecessary friction in the content authoring workflow.
+
+### Our Solution
+
+Jarvis (cloud API solution) empowers content authors to:
+
+-   Clone existing components with a single click, preserving all styling, layout, and configuration settings
+-   Focus primarily on content creation rather than repetitive component setup
+-   Reduce time spent on technical configuration and component placement
+-   Maintain design consistency across the site by duplicating properly configured components
+    By eliminating the need to repeatedly drag, drop, and configure similar components, Jarvis transforms the content authoring experience in Sitecore Pages. Content teams can now work significantly faster, with less technical overhead, allowing them to dedicate more time to creating engaging content rather than handling repetitive configuration tasks.
+    The solution seamlessly integrates with the Sitecore Pages editing interface through a custom Higher-Order Component, making the cloning functionality intuitive and accessible directly within the familiar authoring environment.
 
 ## Project Structure
 
 Our solution consists of two main components:
 
-- **XM Cloud Solution** - Based on the XM Cloud Starter Kit
-- **Jarvis API** - An Express.js application that interfaces with Azure OpenAI and Sitecore GraphQL APIs
+-   **XM Cloud Solution** - Based on the XM Cloud Starter Kit
+-   **Jarvis API** - An Express.js application that interfaces with Sitecore Authoring GraphQL APIs
 
 ### Key Components
 
-- **`with-editable-tools-wrapper.tsx`** - A Higher-Order Component (HOC) that integrates the cloning functionality into the Sitecore Pages interface. This component is critical as it:
-  - Wraps Sitecore components to provide additional editing capabilities
-  - Renders the clone button in the component toolbar
-  - Handles the communication between the Sitecore Pages UI and the Jarvis API
-  - Enables content authors to clone components directly from the editing interface
+-   **`with-editable-tools-wrapper.tsx`** - A Higher-Order Component (HOC) that integrates the cloning functionality into the Sitecore Pages interface. This component is critical as it:
+    -   Wraps Sitecore components to provide additional editing capabilities
+    -   Renders the clone button in the component toolbar
+    -   Handles the communication between the Sitecore Pages UI and the Jarvis API
+    -   Enables content authors to clone components directly from the Sitecore Pages editing interface
 
 ### Directory Structure
 
@@ -49,7 +67,9 @@ Our solution consists of two main components:
 │   │       │   │   └── withEditableToolsWrapper.tsx  # HOC that enables cloning in Pages
 └── ENTRYFORM.md           # Hackathon submission details
 ```
+
 ## Video link
+
 ⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
 ⟹ [Replace this Video link](#video-link)
@@ -62,7 +82,7 @@ Our solution consists of two main components:
 
 ### Jarvis API (`/src/jarvis-api`)
 
--   Install Node JS `20.10.0`
+-   Install Node JS `22.11.0`
 
 ## Installation Instructions
 
@@ -91,6 +111,33 @@ This repository is based on the XM Cloud starter kit.
 
 ```ps1
 dotnet sitecore ser push
+```
+
+IMPORTANT!! as demo requires some npm serialization packages, for avoid any troubleshooting in content sync issue. Run npm first during initial up.ps1.
+
+in src/sitecore.json
+
+```json
+   "modules": [
+        "npm:@constellation4sitecore/constellation-sxa-nextjs@22.5.2",
+        "npm:@constellation4sitecore/labels@22.5.2",
+        "npm:@constellation4sitecore/url-friendly-page-names@22.5.2",
+        "npm:@constellation4sitecore/navigation@22.5.2"
+    ],
+```
+
+Then restore file
+
+```json
+    "modules": [
+        "npm:@constellation4sitecore/constellation-sxa-nextjs@22.5.2",
+        "npm:@constellation4sitecore/labels@22.5.2",
+        "npm:@constellation4sitecore/url-friendly-page-names@22.5.2",
+        "npm:@constellation4sitecore/navigation@22.5.2",
+        "authoring/items/**/*.module.json",
+        "authoring/serialization/Feature/*/*.module.json",
+        "authoring/serialization/Project/*/*.module.json"
+    ],
 ```
 
 ### Install Jarvis API
@@ -122,49 +169,43 @@ This will initialize the API app at `http://localhost:3001`
 
 #### Configure Jarvis API Environmental Variables
 
-| Variable                      | Description                                                                                                                                                                                    |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| PORT                          | Port where the services will be running (default: 3001)                                                                                                                                        |
-| GRAPH_QL_ENDPOINT             | Endpoint for the GraphQL API (e.g., "https://xmcloudcm.localhost/sitecore/api/authoring/graphql/v1")                                                                                           |
-| GRAPH_QL_API_KEY              | [API key](https://doc.sitecore.com/xmc/en/developers/xm-cloud/walkthrough--enabling-and-authorizing-requests-to-the-authoring-and-management-api.html) for accessing the Authoring GraphQL API |
+| Variable          | Description                                                                                                                                                                                              |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PORT              | Port where the services will be running (default: 3001)                                                                                                                                                  |
+| GRAPH_QL_ENDPOINT | Endpoint for the GraphQL API (e.g., "https://xmcloudcm.localhost/sitecore/api/authoring/graphql/v1")                                                                                                     |
+| GRAPH_QL_API_KEY  | [Authoring API key](https://doc.sitecore.com/xmc/en/developers/xm-cloud/walkthrough--enabling-and-authorizing-requests-to-the-authoring-and-management-api.html) for accessing the Authoring GraphQL API |
+
+\*\* For local Development you can run `dotnet sitecore login` then you copy the API KEY from `.sitecore/user.json`
+
+#### Configure for NextJS Application.
+
+In .env.local
+
+| Variable               | Description                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------- |
+| NEXT_PUBLIC_JARVIS_API | Base URL where Jarvis API project will be running (default: http://localhost:3001) |
 
 ## API Endpoints
 
 The Jarvis API provides the following endpoints, with cloning functionality being the core feature:
 
-### `/api/clone`
-- **Description**: Core functionality - facilitates cloning of templates and items in Sitecore Pages, which is not available by default in Sitecore
-- **Method**: POST
-- **Parameters**:
-  - `sourceId` (required): ID of the source template or item to clone
-  - `targetPath` (required): Path where the clone should be created
-  - `newName` (required): Name for the cloned item
-  - `fields` (optional): Fields to override in the cloned item
-  - `includeChildren` (optional): Boolean flag to include child items in the clone operation (default: false)
-  - `overwriteExisting` (optional): Boolean flag to overwrite existing items with the same name (default: false)
-- **Response**:
-  ```json
-  {
-    "id": "cloned-item-id",
-    "name": "Cloned Item Name",
-    "path": "/sitecore/content/path/to/cloned-item",
-    "templateId": "template-id-of-cloned-item"
-  }
-  ```
-- **Example Request**:
-  ```json
-  {
-    "sourceId": "{GUID-OF-SOURCE-ITEM}",
-    "targetPath": "/sitecore/content/destination-folder",
-    "newName": "Cloned Homepage",
-    "fields": {
-      "Title": "New Homepage Title",
-      "Description": "Updated description for the cloned page"
-    },
-    "includeChildren": true
-  }
-  ```
+### POST `/api/clone`
 
+-   **Description**: Core functionality - facilitates cloning of templates and items in Sitecore Pages, which is not available by default in Sitecore
+-   **Method**: POST
+-   **Parameters**:
+    -   `dataSource` (optional): ID of the data source
+    -   `renderingId` (required): UID for the rendering.
+    -   `language` (required): Language
+    -   `itemId` (required): Current Page, you can obtain the value from `sitecoreContext.route.itemId`
+    -   `palceholders` (optional): set of placeholdes that are connected to the current page.
+-   **Response**:
+
+    ```json
+    {
+    "success": boolean
+    }
+    ```
 
 ## Usage Instructions
 
@@ -173,29 +214,38 @@ The Jarvis API provides the following endpoints, with cloning functionality bein
 1. Create your SXA Component by following the steps for Cloning Rendering:
 
     - [More Info](https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/developer-experience/creating-new-components)
-    - Go to Template Definition
-    - Inherit the `_Searchable on Jarvis` template from `Feature/Jarvis` feature.
 
 2. To enable cloning functionality for a component:
-   
-   - Import the HOC in your component file:
-     ```tsx
-     import { withEditableToolsWrapper } from 'path/to/withEditableToolsWrapper';
-     ```
-   
-   - Wrap your component with the HOC:
-     ```tsx
-     const MyComponent = (props) => {
-       // Your component implementation
-     };
-     
-     // Export the wrapped component with cloning capabilities
-     export default withEditableToolsWrapper(MyComponent);
-     ```
+
+    - Import the HOC in your component file:
+
+        ```tsx
+        import { withEditableToolsWrapper } from "lib/jarvis/with-editable-tools-wrapper";
+        ```
+
+    - Wrap your component with the HOC:
+
+        ```tsx
+        const MyComponent = (props: MyComponentProps) => {
+            // Your component implementation
+        };
+
+        // Export the wrapped component with cloning capabilities
+        export default withEditableToolsWrapper()<MyComponentProps>(
+            MyComponent
+        );
+        ```
 
 ### Marketer Use Case - Cloning Content
 
-1. 
+1. Drag & Drop Components
+2. Click on Copy Icon to Copy specific component. For example you can duplicate Column Splitter
+
+![Clone Component](docs/images/usage1.jpg?raw=true "Clone Component")
+
+3. After click on clone button it will clone Renderings and Datasources as follows:
+
+![Clone Component Result](docs/images/duplicateresult.jpg?raw=true "Clone Component Result")
 
 ## Comments
 
@@ -238,10 +288,11 @@ export default router;
 ```
 
 This route:
-- Exposes a POST endpoint at `/api/clone`
-- Accepts request body parameters for the cloning operation
-- Calls the `cloneRendering` service function with these parameters
-- Returns a JSON response with the cloning operation result
+
+-   Exposes a POST endpoint at `/api/clone`
+-   Accepts request body parameters for the cloning operation
+-   Calls the `cloneRendering` service function with these parameters
+-   Returns a JSON response with the cloning operation result
 
 #### `cloneRendering` Service
 
@@ -251,7 +302,7 @@ The `cloneRendering` function in `src/jarvis-api/src/services/item.ts` is the co
 export const cloneRendering = async (body: CloneRenderingBody) => {
     // Retrieve the final rendering XML from Sitecore
     const finalRendering = await getFinalRendering(body.itemId, body.language);
-    
+
     // Parse the XML representation of the rendering
     const parseXml = promisify(parseString);
     const result = (await parseXml(finalRendering)) as any;
@@ -263,7 +314,7 @@ export const cloneRendering = async (body: CloneRenderingBody) => {
         body.renderingId,
         body.dataSource
     );
-    
+
     // Process any nested placeholders
     renderings = await processPlaceholders(
         renderings,
@@ -274,10 +325,11 @@ export const cloneRendering = async (body: CloneRenderingBody) => {
 
     // Convert back to XML and update the item
     // ...
-}
+};
 ```
 
 Key features of this implementation:
+
 1. **XML Processing** - The function works with Sitecore's XML representation of renderings
 2. **Deep Cloning** - Clones not just the component but also its datasource
 3. **Placeholder Management** - Handles dynamic placeholders and nested components
@@ -286,6 +338,7 @@ Key features of this implementation:
 #### Cloning Process Flow
 
 The cloning process follows these steps:
+
 1. Client calls the `/api/clone` endpoint with the source component details
 2. The API retrieves the current rendering XML from Sitecore
 3. The system identifies the target component and its datasource
@@ -302,9 +355,10 @@ This implementation enables seamless component cloning in Sitecore Pages, a feat
 Components that need cloning capability can be wrapped with the HOC:
 
 ```tsx
-import { withEditableToolsWrapper } from '../../components/withEditableToolsWrapper';
-import { MyComponent } from './MyComponent';
+import { withEditableToolsWrapper } from "lib/jarvis/with-editable-tools-wrapper";
+import { MyComponent } from "./MyComponent";
 
 // Apply the HOC to enable cloning functionality
-export const MyComponentWithCloning = withEditableToolsWrapper(MyComponent);
+export const MyComponentWithCloning =
+    withEditableToolsWrapper()<MyComponentProps>(MyComponent);
 ```

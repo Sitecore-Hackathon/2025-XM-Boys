@@ -83,7 +83,6 @@ const sendComponentData = async (data: ComponentData): Promise<void> => {
     }
 
     const result = await response.json();
-    console.log('API Response:', result);
   } catch (error) {
     console.error('Failed to send component data:', error);
   }

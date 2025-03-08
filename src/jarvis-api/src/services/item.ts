@@ -103,7 +103,6 @@ const cloneRenderingInLayout = async (
         newDatasourceId = await duplicateDatasource(datasource);
     }
     const nextDynamicPlaceholderId = getNextDynamicPlaceholderId(renderings);
-    console.log("nextDynamicPlaceholderId", nextDynamicPlaceholderId);
     const clone = {
         $: {
             uid: generateUid(),
@@ -249,7 +248,6 @@ export const updateItem = async (item: Item, language: string) => {
             language: language,
         });
         return response;
-        //console.log(response);
     } catch (error) {
         console.error("Error", error);
         throw error;

@@ -11,7 +11,7 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import ForgeFlexibleContainer from 'base-components/modules/FlexibleContainer';
 import { LinkProps } from 'base-components/types';
-import { PageEditorMessage } from 'components/PageEditorMessage';
+import { PageEditorMessage } from 'components/sxa/PageEditorMessage';
 import { getLinkText } from 'helpers/foundation/links/get-link-text';
 import { ComponentProps } from 'lib/component-props';
 
@@ -56,13 +56,13 @@ const BaseFlexibleContainer = ({
         label: link?.value?.text
           ? link.value.text
           : isExternal
-            ? (link?.value?.href ?? '')
-            : getLinkText(link),
+          ? link?.value?.href ?? ''
+          : getLinkText(link),
         href: isExternal
           ? url
           : isPreview
-            ? `${url}?sc_site=${context.sitecoreContext?.site?.name ?? ''}`
-            : url,
+          ? `${url}?sc_site=${context.sitecoreContext?.site?.name ?? ''}`
+          : url,
         target: link.value.target,
       }
     : null;

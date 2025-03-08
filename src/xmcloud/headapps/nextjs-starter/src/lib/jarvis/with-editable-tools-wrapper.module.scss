@@ -4,13 +4,13 @@
   margin-right: -30px;
   top: -40px;
   width: 0;
+  z-index: 1000;
 
   &__edit-button {
     position: absolute;
     padding: 8px 16px;
     border: none;
     cursor: pointer;
-    z-index: 1000;
   }
 }
 

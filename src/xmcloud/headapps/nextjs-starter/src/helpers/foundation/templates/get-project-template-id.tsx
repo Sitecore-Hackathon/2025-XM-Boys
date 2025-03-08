@@ -14,7 +14,7 @@ type SearchResults = {
         parent: {
           name: string;
         };
-      },
+      }
     ];
   };
 };
@@ -29,7 +29,7 @@ type TemplateSearchResults = {
           name: string;
           id: string;
         };
-      },
+      }
     ];
   };
 };

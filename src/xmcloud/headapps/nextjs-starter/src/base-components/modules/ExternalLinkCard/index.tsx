@@ -62,7 +62,9 @@ const ExternalLinkCard = ({
         </>
       )}
       <div
-        className={`${styles['external-link-card__content-container']} ${imageValidation() ? styles['external-link-card__content-container--top-border'] : ''}`}
+        className={`${styles['external-link-card__content-container']} ${
+          imageValidation() ? styles['external-link-card__content-container--top-border'] : ''
+        }`}
       >
         {subTitle && <div className={styles['external-link-card__category']}>{subTitle}</div>}
         {title && <Heading className={styles['external-link-card__heading']}>{title}</Heading>}

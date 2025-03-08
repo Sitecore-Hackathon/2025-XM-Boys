@@ -44,7 +44,11 @@ const CTA = ({ link, $primary, theme }: CTAProps) => {
 
   return (
     <span
-      className={`${styles['cta-anchor__container']} ${$primary ? styles['cta-anchor__container--primary'] : styles['cta-anchor__container--secondary']} ${ctaTheme === 'Dark' ? styles['cta-anchor__container--dark-theme'] : ''}`}
+      className={`${styles['cta-anchor__container']} ${
+        $primary
+          ? styles['cta-anchor__container--primary']
+          : styles['cta-anchor__container--secondary']
+      } ${ctaTheme === 'Dark' ? styles['cta-anchor__container--dark-theme'] : ''}`}
       ref={ref}
     >
       {isReactNode(link) ? (

@@ -59,8 +59,8 @@ const ArticleCard = ({ fields, params }: ExternalLinkCardProps) => {
         isPageEditing
           ? '#'
           : isExternal
-            ? url
-            : getRelativeUrl(url, context.sitecoreContext.site?.name, isPreview)
+          ? url
+          : getRelativeUrl(url, context.sitecoreContext.site?.name, isPreview)
       }
       target={target}
       styleClasses={`${params.styles} ${blockWidth}`}

@@ -44,5 +44,5 @@
             }
         ]
     },
-    "references": ["Feature.Content"]
+    "references": ["Feature.Content", "Constellation", "Constellation.Foundation.Labels", "Constellation.Feature.Navigation"]
 }

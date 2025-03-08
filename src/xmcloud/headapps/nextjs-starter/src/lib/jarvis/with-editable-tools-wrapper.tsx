@@ -1,7 +1,8 @@
-import React, { ReactNode, ComponentType, ReactElement, useRef, useEffect } from 'react';
+import React, { ReactNode, ComponentType, ReactElement, useState } from 'react';
 import { ComponentRendering, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import styles from './with-editable-tools-wrapper.module.scss';
 import { useRouter } from 'next/router';
+import { Button } from '@chakra-ui/react';
 
 interface ComponentData {
   placeholders: unknown;
@@ -44,23 +45,16 @@ const EditableComponentWrapper: React.FC<EditableComponentWrapperProps> = ({
 }) => {
   const { sitecoreContext } = useSitecoreContext();
   const isEditing = sitecoreContext.pageEditing;
-  const ref = useRef<HTMLDivElement>(null);
   const router = useRouter();
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.addEventListener('horizon:designing:find-rendering', (e) => {
-        console.log(e);
-      });
-    }
-  }, []);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <>
-      <div className={`${styles['editable-component']} ${className || ''}`} ref={ref}>
+      <div className={`${styles['editable-component']} ${className || ''}`}>
         {isEditing && (
-          <button
+          <Button
             onClick={async () => {
+              setIsLoading(true);
               const componentData: ComponentData = {
                 placeholders: rendering?.placeholders,
                 dataSource: rendering?.dataSource,
@@ -69,14 +63,17 @@ const EditableComponentWrapper: React.FC<EditableComponentWrapperProps> = ({
                 itemId: sitecoreContext.route?.itemId,
               };
 
-              await sendComponentData(componentData);
-
-              router.reload();
+              await sendComponentData(componentData).finally(() => {
+                setIsLoading(false);
+                router.reload();
+              });
             }}
-            className={styles['editable-component__edit-button']}
+            colorScheme="neutral"
+            isLoading={isLoading}
+            loadingText="Copying..."
           >
             Copy
-          </button>
+          </Button>
         )}
       </div>
     </>
